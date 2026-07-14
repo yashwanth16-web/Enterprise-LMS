@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API = "http://127.0.0.1:8000";
+const API =
+  process.env.NEXT_PUBLIC_API_URL ??
+  "http://127.0.0.1:8000";
 
 export const getDashboardStats = async () => {
   const { data } = await axios.get(
@@ -25,7 +27,7 @@ export const getCourseCategories = async () => {
 
 export const getRecentActivity = async () => {
   const { data } = await axios.get(
-    "http://127.0.0.1:8000/analytics/recent-activity"
+    `${API}/analytics/recent-activity`
   );
   return data;
 };
