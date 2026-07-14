@@ -30,6 +30,8 @@ from app.routers.search import router as search_router
 
 from app.routers.notifications import router as notification_router
 
+from fastapi.middleware.cors import CORSMiddleware
+
 # Create Database Tables
 Base.metadata.create_all(bind=engine)
 
@@ -92,3 +94,15 @@ def api_info():
         "version": "1.0.0",
         "developer": "Yashwanth"
     }
+origins = [
+    "http://localhost:5173",
+    "https://enterprise-lms-blond.vercel.app",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
