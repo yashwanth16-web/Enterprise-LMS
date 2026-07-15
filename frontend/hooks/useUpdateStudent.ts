@@ -1,6 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { updateStudent } from "@/services/studentService";
 
 export default function useUpdateStudent() {
@@ -15,13 +16,9 @@ export default function useUpdateStudent() {
       student: any;
     }) => updateStudent(id, student),
 
-    onSuccess: (_, variables) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["students"],
-      });
-
-      queryClient.invalidateQueries({
-        queryKey: ["student", variables.id],
       });
     },
   });

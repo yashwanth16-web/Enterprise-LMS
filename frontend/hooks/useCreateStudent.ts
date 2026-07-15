@@ -1,6 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { createStudent } from "@/services/studentService";
 
 export default function useCreateStudent() {

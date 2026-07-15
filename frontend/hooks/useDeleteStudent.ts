@@ -7,7 +7,7 @@ export default function useDeleteStudent() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: deleteStudent,
+    mutationFn: (id: number) => deleteStudent(id),
 
     onSuccess: () => {
       queryClient.invalidateQueries({
